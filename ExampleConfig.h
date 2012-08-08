@@ -1,6 +1,6 @@
 #include <vector>
 
-class ExampleDef {
+class ExampleConfig {
     
     public:
         vector<string> getSetOfStates();
