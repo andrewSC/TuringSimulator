@@ -1,4 +1,6 @@
 #include <vector>
+#include <map>
+
 #include "State.h"
 
 class ExampleConfig {
@@ -7,7 +9,7 @@ class ExampleConfig {
         vector<string> getSetOfStates();
         vector<string> getInputAlphabet();
         vector<string> getTapeAlphabet();
-        vector<State> getTransitionFunction();
+        void getTransitionFunction();
         string getStartState();
         string getAcceptState();
         string getRejectState();

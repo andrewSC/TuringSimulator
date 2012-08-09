@@ -1,5 +1,15 @@
 #include "ExampleConfig.h"
 
+
+struct transitionFunction {
+    char writeSymbol;
+    int headDirection;
+    string nextState;
+};
+
+typedef map<char, transitionFunction> functionLookupTable;
+
+
 vector<string> ExampleConfig::getSetOfStates() {
     vector<string> setOfStates(7);
   
@@ -35,11 +45,9 @@ vector<string> ExampleConfig::getTapeAlphabet() {
 }
 
 
-vector<State> ExampleConfig::getTransitionFunction() {
-    vector<State> transitionFunctions; 
+void ExampleConfig::getTransitionFunction() {
+    map<string, functionLookupTable> transitionLookupTable;
+
     
-    State* q1 = new State("#", RIGHT);
-    State* q2 = 
     
-    return transitionFunctions;
 }
