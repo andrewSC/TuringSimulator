@@ -5,7 +5,7 @@
 #include <iostream>
 
 #include "Tape.h"
-#include "Direction.h"
+#include "Machine.h"
 
 using namespace std;
 
@@ -17,7 +17,9 @@ int main(int argc, char* argv[]) {
 
     } else {
 
-        //Tape tmTape((string(argv[1])));
+        Tape tmTape((string(argv[1])));
+        Machine tMachine;
+        tMachine.processTape(tmTape.getTape());
 
     }
 

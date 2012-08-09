@@ -1,11 +1,8 @@
 #include <vector>
-#include <stdio.h>
 
-#include "State.h"
-#include "Tape.h"
+using namespace std;
 
 class Head {
     public:
-        void processInputString(vector<char> tape);
-        void printTape(vector<char> tape, int iterationCounter);    
+        void processTapeCharacter(char tape);
 };

@@ -7,9 +7,9 @@ class Tape {
 
     public:
         Tape(string inputTape);
-        void setTape(string inputTape);
+        void setTape(vector<char> inputTape);
         vector<char> getTape();
 
     private:
-        string tape;
+        vector<char> tape;
 };

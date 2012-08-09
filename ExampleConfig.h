@@ -4,8 +4,8 @@
 #include "State.h"
 
 class ExampleConfig {
-    
     public:
+        ExampleConfig();
         vector<string> getSetOfStates();
         vector<string> getInputAlphabet();
         vector<string> getTapeAlphabet();
