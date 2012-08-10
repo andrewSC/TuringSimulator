@@ -181,7 +181,21 @@ vector<string> ExampleConfig::getTapeAlphabet() {
     return tapeAlphabet;
 }
 
-TransitionFunction ExampleConfig::getTransitionFunction(string state, char tapeCharacter) {
+TransitionFunction* ExampleConfig::getTransitionFunction(string state, char tapeCharacter) {
+    TransitionFunction* partialTransition = NULL;
+    map<string, functionLookupTable>::iterator transitionLookupIterator;
 
-    return transitionLookupTable[state][tapeCharacter];
+
+    transitionLookupIterator = transitionLookupTable.find(state);
+    if (transitionLookupIterator != transitionLookupTable.end()) {
+
+        map<char, TransitionFunction>::iterator partialTransitionIterator; 
+        partialTransitionIterator = (transitionLookupIterator->second).find(tapeCharacter);
+
+        if (partialTransitionIterator != (transitionLookupIterator->second).end()) {
+            partialTransition = &(partialTransitionIterator->second);
+        }
+    }
+ 
+    return partialTransition;
 }

@@ -3,6 +3,8 @@
 
 #include "State.h"
 
+using namespace std;
+
 struct TransitionFunction {
     char writeSymbol;
     int headDirection;
@@ -15,7 +17,7 @@ class ExampleConfig {
         vector<string> getSetOfStates();
         vector<string> getInputAlphabet();
         vector<string> getTapeAlphabet();
-        TransitionFunction getTransitionFunction(string state, char tapeCharacter);
+        TransitionFunction* getTransitionFunction(string state, char tapeCharacter);
         string getStartState();
         string getAcceptState();
         string getRejectState();

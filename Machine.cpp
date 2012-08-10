@@ -18,11 +18,11 @@ void Machine::processTape(vector<char> tape) {//magic happens here
         printTape(tape, iterationCounter, currentStateIndex, currentState);
         char tapeCharacter = tape[currentStateIndex];
 
-       TransitionFunction transFunc = tmConfig.getTransitionFunction(currentState, tapeCharacter);
+       TransitionFunction* transFunc = tmConfig.getTransitionFunction(currentState, tapeCharacter);
     
-       // if( transFunc == NULL ) {
+        if( transFunc == NULL ) {
             //we've failed, oh lawdy, now wut
-        //}
+        }
 
         iterationCounter++; 
     } 
