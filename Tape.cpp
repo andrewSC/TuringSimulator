@@ -1,8 +1,18 @@
 #include "Tape.h"
+#include "ExampleConfig.h"
+
+#include <iostream>
 
 Tape::Tape(string inputTape) {
-    vector<char> tapeVector(inputTape.length());   
-    tapeVector.assign(tape.begin(), tape.end());
+    ExampleConfig conf;
+    vector<char> tapeVector;
+    
+    tapeVector.push_back(((conf.getTapeAlphabet()).back()).c_str()[0]);
+    for (int i = 0; i < inputTape.length(); i++) {
+        tapeVector.push_back(inputTape[i]);
+    }
+    tapeVector.push_back(((conf.getTapeAlphabet()).back()).c_str()[0]);// extra padding, yo
+    
     tape = tapeVector;
 }
 
