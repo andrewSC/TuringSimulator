@@ -183,5 +183,5 @@ vector<string> ExampleConfig::getTapeAlphabet() {
 
 TransitionFunction ExampleConfig::getTransitionFunction(string state, char tapeCharacter) {
 
-    return (transitionLookupTable["state"])[tapeCharacter];
+    return transitionLookupTable[state][tapeCharacter];
 }
