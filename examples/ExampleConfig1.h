@@ -17,7 +17,7 @@ class ExampleConfig {
         ExampleConfig();
         vector<string> getSetOfStates();
         vector<string> getInputAlphabet();
-        vector<char> getTapeAlphabet();
+        vector<string> getTapeAlphabet();
         TransitionFunction* getTransitionFunction(string state, char tapeCharacter);
         string getStartState();
         string getAcceptState();
