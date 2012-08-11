@@ -12,4 +12,4 @@ class Tape {
 
     private:
         vector<char> tape;
-};
+}; 

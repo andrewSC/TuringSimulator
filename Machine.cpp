@@ -15,16 +15,28 @@ void Machine::processTape(vector<char> tape) {//magic happens here
     currentState = (tmConfig.getSetOfStates())[0]; //get the initial state from the example configuration
 
     while (!halted) {
-        printTape(tape, iterationCounter, currentStateIndex, currentState);
         char tapeCharacter = tape[currentStateIndex];
 
-       TransitionFunction* transFunc = tmConfig.getTransitionFunction(currentState, tapeCharacter);
-    
-        if ( transFunc != NULL ) {//ayuup, we found the Transition function goods
-            if ((transFunc->headDirection) != STAY) {//ayup, can't stop won't stop
+        if (currentState.compare(tmConfig.getAcceptState()) == 0) {
 
-                if ((transFunc->writeSymbol) != ' ') {//if i got a blank character it means don't write ish
-                    tape[currentStateIndex] = transFunc->writeSymbol; //write the symbol to the tape
+            halted = true;
+            tape.push_back('#');//a little hacky but valid            
+            printTape(tape, iterationCounter, currentStateIndex, currentState);
+
+        } else if (currentState.compare(tmConfig.getRejectState()) == 0) {
+
+            halted = true;
+            tape.push_back('#');//hax
+            printTape(tape, iterationCounter, currentStateIndex, currentState);
+
+        } else {
+
+            printTape(tape, iterationCounter, currentStateIndex, currentState);
+            TransitionFunction* transFunc = tmConfig.getTransitionFunction(currentState, tapeCharacter);
+
+            if ( transFunc != NULL ) {//ayuup, we found the Transition function goods
+                if ((transFunc->writeSymbol) != ' ') {//blank character's don't write ish
+                    tape[currentStateIndex] = transFunc->writeSymbol;
                 }
                 
                 switch (transFunc->headDirection) {
@@ -36,18 +48,13 @@ void Machine::processTape(vector<char> tape) {//magic happens here
                         break;
                 }
 
-                currentState = transFunc->nextState;//hey, I just met you, and this is crazy, but this next state is accept, maybe?
+                currentState = transFunc->nextState;//hey, I just met you, and this is crazy, but can this next state be accept, maybe?
  
-            } else {//apparently we either accepted or rejected, coolio.
-                halted = true;
-            }      
-
- 
-        } else { // oh crap
-            halted = true;
-            cout << "not good bro" << endl;
+            } else { // oh crap, we're here because given the current state and tape character, there are no transitions to other states. #rejected
+                halted = true;  
+                cout << "transition not found" << endl;
+            }
         }
-
         iterationCounter++; 
     }
 }
@@ -58,9 +65,9 @@ void Machine::printTape(vector<char> tape, int iterationCounter, int stateIndex,
 
     for (int i = 1; i < tape.size(); i++) {
         if (i == stateIndex) {
-            printf("%s", state.c_str());
+            printf("%s ", state.c_str());
         } else {
-            printf("%c", tape[i]);
+            printf("%c ", tape[i]);
 
         }
     }

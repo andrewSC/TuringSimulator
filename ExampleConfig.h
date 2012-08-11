@@ -21,6 +21,10 @@ class ExampleConfig {
         string getStartState();
         string getAcceptState();
         string getRejectState();
+
+    private:
+        void setSetOfStates();
+        vector<string> setOfStates;
         
 };
 

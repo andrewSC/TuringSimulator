@@ -4,6 +4,7 @@ typedef map<char, TransitionFunction> functionLookupTable;
 map<string, functionLookupTable> transitionLookupTable;
 
 ExampleConfig::ExampleConfig() {
+    setSetOfStates(); //init our set of states    
     //q1
     functionLookupTable q1_functionTable;
     vector<TransitionFunction> q1_partialTransition(3);
@@ -143,22 +144,31 @@ ExampleConfig::ExampleConfig() {
 
 /**
  * The set of states.  This vector must be initialized in such a way that the
- * first element in the vector is the initial start state.
+ * first element in the vector is the initial start state and the last two elements
+ * are the accept and reject states in that order.
  *
  *
  */
-vector<string> ExampleConfig::getSetOfStates() {
-    vector<string> setOfStates(7);
-  
-    setOfStates[0] = "q1";
-    setOfStates[1] = "q2";
-    setOfStates[2] = "q3";
-    setOfStates[3] = "q4";
-    setOfStates[4] = "q5";
-    setOfStates[5] = "q_accept";
-    setOfStates[6] = "q_reject";
+void ExampleConfig::setSetOfStates() {
+    setOfStates.push_back("q1");
+    setOfStates.push_back("q2");
+    setOfStates.push_back("q3");
+    setOfStates.push_back("q4");
+    setOfStates.push_back("q5");
+    setOfStates.push_back("q_accept");
+    setOfStates.push_back("q_reject");
+}
 
+vector<string> ExampleConfig::getSetOfStates() {
     return setOfStates;
+}
+
+string ExampleConfig::getAcceptState() {
+    return setOfStates[(setOfStates.size()-2)];
+}
+
+string ExampleConfig::getRejectState() {
+    return setOfStates[(setOfStates.size()-1)];
 }
 
 
