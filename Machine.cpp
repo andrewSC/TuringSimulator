@@ -1,5 +1,4 @@
 #include "Machine.h"
-#include "Head.h"
 #include "ExampleConfig.h"
 
 Machine::Machine(){}
@@ -9,7 +8,6 @@ void Machine::processTape(vector<char> tape) {//magic happens here
     string currentState = "";
     bool halted = false;
     int iterationCounter = 1;
-    Head tmHead;
     ExampleConfig tmConfig;
     
     currentState = (tmConfig.getSetOfStates())[0]; //get the initial state from the example configuration

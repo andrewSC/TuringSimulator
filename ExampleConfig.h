@@ -1,7 +1,8 @@
 #include <vector>
 #include <map>
+#include <string>
 
-#include "State.h"
+#include "Direction.h"
 
 using namespace std;
 
