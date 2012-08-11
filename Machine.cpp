@@ -54,11 +54,6 @@ void Machine::processTape(vector<char> tape) {//magic happens here
  
             } else { // oh crap, we're here because given the current state and tape character, there are no transitions to other states. #rejected
                 halted = true;
-            
-//            cout << "tape[index]: " << tape[currentStateIndex] << endl;
-//           cout << "index: " << currentStateIndex << endl; 
-//            cout << "currentState: " << currentState << endl;
-//            cout << "reject: " << tmConfig.getRejectState();
                 printTape(tape, iterationCounter, currentStateIndex, tmConfig.getRejectState());
             }
         }
